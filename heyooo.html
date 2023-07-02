@@ -1088,7 +1088,7 @@
                               
       
               
-                                        <h2>Стоимость заказа</h2>
+                                        <h2>Сыввыыа</h2>
   
 
           
@@ -1115,113 +1115,27 @@
           
         
                                         <h3>Решение</h3>
-  
-
-          
-        
-                                      <p data-id="743386ea-ea8a-4603-abff-e562edfb007e"><span><b>Способ 1:</b></span></p>
 
 
-          
-        
-                                                  <figure class="code-block">
-    
-        <pre class="code-wrapper python">
-        <code>from operator import mul
-with open(&#039;prices.txt&#039;) as file:
-	print(sum(map(lambda line: mul(*map(int, line.split()[1:])), file)))
-</code>
-    </pre>
-
-  </figure>
-
-            
-          
-        
-                                      <p data-id="5741fe88-aa8c-4348-ac2e-647e12436927"><b>Способ 2:</b></p>
 
 
-          
-        
-                                                  <figure class="code-block">
-    
-        <pre class="code-wrapper python">
-        <code>import pandas as pd
-df = pd.read_csv(&#039;prices.txt&#039;, sep =&#039;\t&#039;, header = None)
-df.columns = [&#039;Товар&#039;, &#039;Количество&#039;, &#039;Цена&#039;]
-df[&#039;Итого&#039;] = df[&#039;Количество&#039;] * df[&#039;Цена&#039;]
-summa_zakaza = sum(df[&#039;Итого&#039;])
-print(summa_zakaza)
-</code>
-    </pre>
-
-  </figure>
-
-            
-          
-        
-                                      <p data-id="5f0a2733-69e8-4787-b1be-8101578ff260"><b>Способ 3:</b></p>
 
 
-          
-        
-                                                  <figure class="code-block">
-    
-        <pre class="code-wrapper python">
-        <code>with open(&#039;prices.txt&#039;) as f:
-	print(sum(eval(&#039;*&#039;.join(s.split()[1:])) for s in f))</code>
-    </pre>
-
-  </figure>
-
-            
-          
-        
-                                      <p data-id="653e3de5-3e73-4bed-b1ed-e8a4a07186b4"><b>Способ 4:</b></p>
 
 
-          
-        
-                                                  <figure class="code-block">
-    
-        <pre class="code-wrapper python">
-        <code>with open(&#039;prices.txt&#039;) as f:
-	print(sum(map(lambda x: int(x[1]) * int(x[2]), map(str.split, f.readlines()))))</code>
-    </pre>
-
-  </figure>
-
-            
-          
-        
-                                      <p data-id="ef49e05e-f848-46da-b93d-7f2139d5c49f"><b>Способ 5:</b></p>
 
 
-          
-        
-                                                  <figure class="code-block">
-    
-        <pre class="code-wrapper python">
-        <code>from functools import reduce
-with open(&#039;prices.txt&#039;) as f:
-	file = open(&#039;prices.txt&#039;, mode=&#039;r&#039;, encoding=&#039;utf-8&#039;)
-	print(reduce(lambda x, y: x + int(y[1]) * int(y[2]), [i.split(&#039;\t&#039;) for i in [i.strip() for i in file.readlines()]], 0))</code>
-    </pre>
 
-  </figure>
 
-            
-          
-        
                                     <div class="flash flash__primary mv-4">
     <div>
-      
+
           </div>
   </div>
 
 
-          
-        
+
+
                                                     <div class="flex align-center pa-4">
   </div>
         <script>
@@ -1343,7 +1257,7 @@ dictionaries-3.md</code>
 
           
         
-                                      <p data-id="f2367e77-b4ba-4e3a-b49e-e6bf69277876"><span>Поскольку слово может встречаться в одном и том же файле несколько раз, есть смысл сохранять результаты поиска во множестве <code class="inline-code">set</code>.</span></p>
+                                      <p data-id="f2367e77-b4ba-4e3a-b49e-e6bf69277876"><span>ага, хуй тебе</span></p>
 
 
           
@@ -1351,20 +1265,7 @@ dictionaries-3.md</code>
                                                   <figure class="code-block">
     
         <pre class="code-wrapper python">
-        <code>import os
-if __name__ == &#039;__main__&#039;:
-	folder = &#039;D:\\Python\\Textfiles&#039;
-	answ = set()
-	search = input()
-	for filename in os.listdir(folder):
-    	filepath = os.path.join(folder, filename)
-    	with open(filepath, &#039;r&#039;, encoding = &#039;utf-8&#039;) as fp:
-        	for line in fp:
-            	if search in line:
-                	answ.add(filename)
-for i in answ:
-	print(i) 
-</code>
+
     </pre>
 
   </figure>
@@ -1385,109 +1286,7 @@ for i in answ:
                                         <h3>Решение</h3>
   
 
-          
-        
-                                      <p data-id="850f85d7-402a-4555-a67d-6fbaefa59501"><span><b>Способ 1:</b></span></p>
 
-
-          
-        
-                                                  <figure class="code-block">
-    
-        <pre class="code-wrapper python">
-        <code>import csv
-def read_csv():
-	with open(&quot;data.csv&quot;) as f:
-    	a = [{k: v for k, v in row.items()}
-        	for row in csv.DictReader(f, skipinitialspace=True)]
-    	return a</code>
-    </pre>
-
-  </figure>
-
-            
-          
-        
-                                      <p data-id="09205102-0546-4047-9dc0-181abafb7270"><b>Способ 2:</b></p>
-
-
-          
-        
-                                                  <figure class="code-block">
-    
-        <pre class="code-wrapper python">
-        <code>def read_csv():
-	with open(&#039;data.csv&#039;) as file:
-    	keys = file.readline().strip().split(&#039;,&#039;)
-    	return [dict(zip(keys, line.strip().split(&#039;,&#039;))) for line in file]</code>
-    </pre>
-
-  </figure>
-
-            
-          
-        
-                                      <p data-id="491dab99-59fa-414c-9857-d94a044071fe"><b>Способ 3:</b></p>
-
-
-          
-        
-                                                  <figure class="code-block">
-    
-        <pre class="code-wrapper python">
-        <code>def read_csv():
-	with open(&#039;data.csv&#039;, encoding=&#039;utf-8&#039;) as file:
-    	info = list(map(lambda x: x.strip().split(&#039;,&#039;), file.readlines()))
-    	return [dict(zip(info[0], j)) for j in info[1:]]</code>
-    </pre>
-
-  </figure>
-
-            
-          
-        
-                                      <p data-id="92179408-8f02-4d6f-99ad-2bc115fb4a9e"><b>Способ 4:</b></p>
-
-
-          
-        
-                                                  <figure class="code-block">
-    
-        <pre class="code-wrapper python">
-        <code>from csv import DictReader
-def read_csv():
-	with open(&#039;data.csv&#039;) as file_object:
-    	data = DictReader(file_object)
-    	ans = list(data)
-	return ans
-</code>
-    </pre>
-
-  </figure>
-
-            
-          
-        
-                                      <p data-id="f6ec4808-a40a-44fa-96fb-e76b641e4866"><b>Способ 5:</b></p>
-
-
-          
-        
-                                                  <figure class="code-block">
-    
-        <pre class="code-wrapper python">
-        <code>def read_csv():
-	with open(&quot;data.csv&quot;) as data_file:
-    	dict_list = []
-    	keys = data_file.readline().strip().split(&quot;,&quot;)
-    	for values in data_file:
-        	dict_list.append(dict(zip(keys, values.strip().split(&quot;,&quot;))))
-    	return dict_list</code>
-    </pre>
-
-  </figure>
-
-            
           
         
                                         <h2>Информация о файле</h2>
@@ -1555,120 +1354,9 @@ Complex is better than complicated.
             
           
         
-                                        <h3>Решение</h3>
+                                        <h3>фыв</h3>
   
 
-          
-        
-                                      <p data-id="dcda0f19-e773-44dc-be0f-d3895e5eabaf"><span><b>Способ 1:</b></span></p>
-
-
-          
-        
-                                                  <figure class="code-block">
-    
-        <pre class="code-wrapper python">
-        <code>with open(&#039;file.txt&#039;) as f:
-	txt = f.read()
-	print(&#039;Input file contains:&#039;)
-	print(sum(map(str.isalpha, txt)), &#039;letters&#039;)
-	print(len(txt.split()), &#039;words&#039;)
-	print(txt.count(&#039;\n&#039;) + 1, &#039;lines&#039;)
-</code>
-    </pre>
-
-  </figure>
-
-            
-          
-        
-                                      <p data-id="1de75da7-f748-4de2-b70a-14c31e556420"><b>Способ 2:</b></p>
-
-
-          
-        
-                                                  <figure class="code-block">
-    
-        <pre class="code-wrapper python">
-        <code>with open(&#039;file.txt&#039;) as f:
-	res = f.readlines()
-	f.seek(0)
-	words = f.read().split()
-	let = sum(len([y for y in x if y.isalpha()]) for x in words)
-print(&#039;Input file contains:&#039;)
-print(f&#039;{let} letters&#039;)
-print(f&#039;{len(words)} words&#039;)
-print(f&#039;{len(res)} lines&#039;)
-</code>
-    </pre>
-
-  </figure>
-
-            
-          
-        
-                                      <p data-id="011669f8-4805-45f6-bcba-4e265d84e897"><b>Способ 3:</b></p>
-
-
-          
-        
-                                                  <figure class="code-block">
-    
-        <pre class="code-wrapper python">
-        <code>with open(&#039;file.txt&#039;) as f:
-	print(&#039;Input file contains:&#039;)
-	print(len(list(filter(lambda x: x.isalpha(), f.read()))), &#039;letters&#039;)
-	f.seek(0)
-	print(len(f.read().split()), &#039;words&#039;)
-	f.seek(0)
-	print(len(list(f.readlines())), &#039;lines&#039;)</code>
-    </pre>
-
-  </figure>
-
-            
-          
-        
-                                      <p data-id="116f55a4-7d68-4eda-afda-5b6a141d484c"><b>Способ 4:</b></p>
-
-
-          
-        
-                                                  <figure class="code-block">
-    
-        <pre class="code-wrapper python">
-        <code>with open(&#039;file.txt&#039;) as file:
-	lst = file.read()
-	lines = lst.count(&#039;\n&#039;) + 1
-	words = len(lst.split())
-	letters = len([c for c in lst if c.isalpha()])
-	print(f&#039;Input file contains:\n{letters} letters\n{words} words\n{lines} lines&#039;)</code>
-    </pre>
-
-  </figure>
-
-            
-          
-        
-                                      <p data-id="9f982bfd-56b7-4541-a58e-09f3c7824d63"><b>Способ 5:</b></p>
-
-
-          
-        
-                                                  <figure class="code-block">
-    
-        <pre class="code-wrapper python">
-        <code>with open(&#039;file.txt&#039;) as f:
-	t = f.read()
-	f.seek(0)
-	print(&#039;Input file contains:&#039;)
-	print(f&#039;{len(list(filter(str.isalpha, t)))} letters&#039;)
-	print(f&#039;{len(t.split())} words&#039;)
-	print(f&#039;{len(f.readlines())} lines&#039;)
-</code>
-    </pre>
-
-  </figure>
 
             
           
@@ -1758,123 +1446,9 @@ PYTHON is awesome!!!!</code>
   </figure>
 
             
-          
-        
-                                        <h3>Решение</h3>
-  
-
-          
-        
-                                      <p data-id="5c6eb9ec-1051-40f9-b285-a475b50fc89c"><span><b>Способ 1:</b></span></p>
-
-
-          
-        
-                                                  <figure class="code-block">
-    
-        <pre class="code-wrapper python">
-        <code>with open(&#039;forbidden_words.txt&#039;) as forbidden_words, open(input()) as to_change:
-	pattern, text = forbidden_words.read().split(), to_change.read()
-text_lower = text.lower()
-for word in pattern:
-	text_lower = text_lower.replace(word, &#039;*&#039; * len(word))
-result = &#039;&#039;.join((y, x)[x == &#039;*&#039;] for x, y in zip(text_lower, text))
-print(result)</code>
-    </pre>
-
-  </figure>
 
             
-          
-        
-                                      <p data-id="53f84b87-de51-4dad-8957-a08db4b655cd"><b>Способ 2:</b></p>
 
-
-          
-        
-                                                  <figure class="code-block">
-    
-        <pre class="code-wrapper python">
-        <code>with open(&#039;forbidden_words.txt&#039;) as f:
-	forbidden_words = {word: &#039;*&#039; * len(word) for word in f.read().split()}
-with open(input()) as f:
-	s = f.read()
-	s_lower = s.lower()
-for forbidden_word in forbidden_words:
-	s_lower = s_lower.replace(forbidden_word, forbidden_words[forbidden_word])
-print(*map((lambda c1, c2: &#039;*&#039; if c2 == &#039;*&#039; else c1), s, s_lower), sep=&#039;&#039;)
-</code>
-    </pre>
-
-  </figure>
-
-            
-          
-        
-                                      <p data-id="18835bff-7036-482a-bc9b-a865a2dd08b5"><b>Способ 3:</b></p>
-
-
-          
-        
-                                                  <figure class="code-block">
-    
-        <pre class="code-wrapper python">
-        <code>with open(&quot;forbidden_words.txt&quot;, encoding=&quot;utf-8&quot;) as file, open(input()) as infile:
-	text = infile.read()
-	for f in file.read().strip(&quot;\n&quot;).split():
-    	pos = text.lower().find(f)
-    	while pos &gt; -1:
-        	text = text[:pos] + &quot;*&quot; * len(f) + text[pos+len(f):]
-        	pos = text.lower().find(f)
-print(text)</code>
-    </pre>
-
-  </figure>
-
-            
-          
-        
-                                      <p data-id="649f989e-756d-4b50-bb4a-c79431454563"><b>Способ 4:</b></p>
-
-
-          
-        
-                                                  <figure class="code-block">
-    
-        <pre class="code-wrapper python">
-        <code>import re
-with open(input()) as inp, open(&#039;forbidden_words.txt&#039;) as fw:
-	text, forbidden = inp.read(), fw.read().split()
-for i in forbidden:
-	text = re.sub(i, &#039;*&#039; * len(i), text, flags=re.I)
-print(text)</code>
-    </pre>
-
-  </figure>
-
-            
-          
-        
-                                      <p data-id="b4f6879f-97bc-4ffd-a961-15ce36ad8652"><b>Способ 5:</b></p>
-
-
-          
-        
-                                                  <figure class="code-block">
-    
-        <pre class="code-wrapper python">
-        <code>with open(input(), encoding=&#039;utf-8&#039;) as r, open(&#039;forbidden_words.txt&#039;, encoding=&#039;utf-8&#039;) as s:
-	w = s.read().split()
-	v = r.read()
-	l = v.lower()
-	for i in w:
-    	l = l.replace(i, &#039;*&#039; * len(i))
-    [print(j if j == &#039;*&#039; else i, end=&#039;&#039;) for i, j in zip(v, l)]</code>
-    </pre>
-
-  </figure>
-
-            
           
         
                                     <div class="delimiter text-center">***</div>
